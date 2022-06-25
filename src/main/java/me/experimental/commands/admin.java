@@ -46,7 +46,7 @@ public class admin implements CommandExecutor {
                                 p.getInventory().addItem(hearts.getLevelOne(amount));
                                 return true;
                             } catch(NumberFormatException e) {
-                                p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&c&lMineStash &7>> &cThe amount you specified was not valid."));
+                                p.sendMessage(ChatColor.translateAlternateColorCodes('&', LifeSteal.prefix+"&cThe amount you specified was not valid."));
                                 return false;
                             }
                         }
@@ -60,7 +60,7 @@ public class admin implements CommandExecutor {
                                 p.getInventory().addItem(hearts.getLevelTwo(amount));
                                 return true;
                             } catch(NumberFormatException e) {
-                                p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&c&lMineStash &7>> &cThe amount you specified was not valid."));
+                                p.sendMessage(ChatColor.translateAlternateColorCodes('&', LifeSteal.prefix+"&cThe amount you specified was not valid."));
                                 return false;
                             }
                         }
@@ -74,7 +74,7 @@ public class admin implements CommandExecutor {
                                 p.getInventory().addItem(hearts.getLevelThree(amount));
                                 return true;
                             } catch(NumberFormatException e) {
-                                p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&c&lMineStash &7>> &cThe amount you specified was not valid."));
+                                p.sendMessage(ChatColor.translateAlternateColorCodes('&', LifeSteal.prefix+"&cThe amount you specified was not valid."));
                                 return false;
                             }
                         }
@@ -83,14 +83,14 @@ public class admin implements CommandExecutor {
                     } else { p.sendMessage("Valid Options: 1/2/3"); }
                 } else if (args[0].equalsIgnoreCase("health")) {
                     // lsadmin health <add/remove/set> <player> <amount>
-                    try { amount = Integer.parseInt(args[3]) * 2; } catch (NumberFormatException e) { e.printStackTrace(); }
-                    try { target = Bukkit.getPlayer(args[2]); } catch (NullPointerException e) { e.printStackTrace(); }
-                    if (args[1].equalsIgnoreCase("add")) { HealthSystem.increase(amount, target); }
-                    if (args[1].equalsIgnoreCase("remove")) { HealthSystem.decrease(amount, target); }
-                    if (args[1].equalsIgnoreCase("set")) { HealthSystem.set(amount, target); }
+                    try { amount = Integer.parseInt(args[3]) * 2; } catch (NumberFormatException e) { p.sendMessage("Your number is invalid.");  e.printStackTrace(); return false; }
+                    try { target = Bukkit.getPlayer(args[2]); } catch (NullPointerException e) { p.sendMessage("Your player was not found"); e.printStackTrace(); return false; }
+                    if (args[1].equalsIgnoreCase("add")) { HealthSystem.increase(amount, target); return true; }
+                    if (args[1].equalsIgnoreCase("remove")) { HealthSystem.decrease(amount, target); return true; }
+                    if (args[1].equalsIgnoreCase("set")) { HealthSystem.set(amount, target); return true; }
                 }
             }
-        } else { commandSender.sendMessage("You are not a player."); }
+        } else { commandSender.sendMessage("You are not a player."); return false; }
         return false;
     }
 }

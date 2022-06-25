@@ -3,6 +3,7 @@ package me.experimental;
 import me.experimental.commands.admin;
 import me.experimental.events.ItemUseEvent;
 import me.experimental.items.hearts;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.RecipeChoice;
@@ -33,6 +34,7 @@ import java.util.logging.Level;
  */
 public class LifeSteal extends JavaPlugin {
 
+    public static String prefix;
     public void onEnable() {
         System.out.print("LIFESTEAL LOADED");
         getCommand("lsadmin").setExecutor(new admin());
@@ -46,6 +48,7 @@ public class LifeSteal extends JavaPlugin {
             getLogger().log(Level.WARNING, "You are using a RELEASE version of LifeSteal. If you find a bug, please report it.");
         }
 
+        this.prefix = ChatColor.RED+""+ChatColor.BOLD+"MineStash"+ChatColor.GRAY+" >> "+ChatColor.WHITE;
 
         /*
          * RECIPES
