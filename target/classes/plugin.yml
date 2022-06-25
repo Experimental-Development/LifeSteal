@@ -1,7 +1,7 @@
 name: LifeSteal
 author: ExperimentalX
 main: me.experimental.LifeSteal
-version: '${project.version}'
+version: "1.6"
 api-version: 1.19
 commands:
    lsadmin:
