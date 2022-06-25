@@ -1,9 +1,0 @@
-name: LifeSteal
-author: ExperimentalX
-main: me.experimental.LifeSteal
-version: "1.0-SNAPSHOT"
-api-version: 1.19
-commands:
-   lsadmin:
-      description: Administrator Commands
-      usage: /lsadmin
