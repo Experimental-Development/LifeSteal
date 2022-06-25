@@ -21,6 +21,7 @@ package me.experimental.events;/*
 import me.experimental.LifeSteal;
 import me.experimental.utils.HealthSystem;
 import net.md_5.bungee.api.ChatColor;
+import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -36,7 +37,7 @@ public class OnPlayerDeath implements Listener {
         this.murderer = e.getEntity().getKiller();
         e.setDeathMessage(ChatColor.translateAlternateColorCodes('&', "&0&l[&c ☠ &0&l] &7Player &a"+victim.getDisplayName()+"&7 has committed die by Player &a"+murderer.getDisplayName()));
         victim.sendMessage(LifeSteal.prefix+ChatColor.RED+"You have lost one heart to "+murderer.getDisplayName());
-        HealthSystem.decreaseIfOver(2, 0, victim);
+        if(HealthSystem.decreaseIfOver(2, 0, victim)) { victim.setGameMode(GameMode.SPECTATOR); victim.sendMessage(LifeSteal.prefix+ChatColor.DARK_RED+"You have been eliminated. I guess you could try Rogue :0"); }
         murderer.sendMessage(LifeSteal.prefix+ChatColor.RED+"You have gained one heart from "+victim.getDisplayName());
         HealthSystem.increaseIfUnder(2, 60, murderer);
     }
