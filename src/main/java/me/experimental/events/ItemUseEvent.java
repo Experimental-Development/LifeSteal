@@ -1,9 +1,7 @@
 package me.experimental.events;
 
 import me.experimental.utils.HealthSystem;
-import net.md_5.bungee.api.ChatColor;
-import net.md_5.bungee.api.Title;
-import org.bukkit.Material;
+import org.bukkit.ChatColor;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
